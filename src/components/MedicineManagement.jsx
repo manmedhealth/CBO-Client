@@ -23,6 +23,9 @@ export default function MedicineManagement({ medicines, onDeleteMedicine, darkMo
                 Stock
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                Description
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -45,11 +48,11 @@ export default function MedicineManagement({ medicines, onDeleteMedicine, darkMo
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
                   {medicine.stock}
                 </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">
+                  {medicine.description}
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <button
-                    onClick={() => onDeleteMedicine(medicine.id)}
-                    className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 transition-colors duration-200"
-                  >
+                  <button onClick={() => onDeleteMedicine(medicine.id)} className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300 transition-colors duration-200">
                     Delete
                   </button>
                 </td>
@@ -61,12 +64,13 @@ export default function MedicineManagement({ medicines, onDeleteMedicine, darkMo
       
       <div className="mt-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md transition-colors duration-200">
         <h3 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Add New Medicine</h3>
-        <form className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <form className="grid grid-cols-1 md:grid-cols-6 gap-4">
           <input
             type="text"
             placeholder="Medicine Name"
             className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
           />
+          
           <input
             type="text"
             placeholder="Category"
@@ -80,6 +84,11 @@ export default function MedicineManagement({ medicines, onDeleteMedicine, darkMo
           <input
             type="number"
             placeholder="Stock"
+            className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          />
+          <input
+            type="text"
+            placeholder="Descroption"
             className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
           />
           <button
