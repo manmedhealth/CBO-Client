@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Billtem({billitems}) {
+function Billtem({billitems, purchaserdata}) {
 
     // Calculate amounts for display
     const calculateAmounts = (item) => {
@@ -18,10 +18,6 @@ function Billtem({billitems}) {
             total
         };
     };
-
-
-
-
 
 // Calculate totals for all items
     const calculateTotals = () => {
@@ -51,7 +47,7 @@ function Billtem({billitems}) {
 
     const totals = calculateTotals();
 
-    
+    // console.log("purchaserdata=>",purchaserdata)
 
     return (
         <div className='flex justify-center items-center min-h-screen bg-gray-900 p-4'>
@@ -59,18 +55,18 @@ function Billtem({billitems}) {
                 {/* Header */}
                 <div className='border-b flex items-center'>
                     <div className='ml-5 py-5 w-24 h-24 bg-gray-200 flex items-center justify-center'>LOGO</div> 
-                    <div className='w-full flex items-center text-2xl font-semibold justify-center'>To the company</div> 
+                    <div className='w-full flex items-center text-2xl font-semibold justify-center'>{purchaserdata.name}</div> 
                 </div>
                 
                 {/* GSTIN and DL Info */}
                 <div className='border-b'>
                     <div className='flex w-full'>
-                        <div className='w-1/2 pl-3 py-2 border-r'>GSTIN NO: uidd74554edd544</div>
-                        <div className='w-1/2 pl-3 py-2'>DL NO1: d5641511midsd</div>
+                        <div className='w-1/2 pl-3 py-2 border-r'>GSTIN NO: {purchaserdata.gst}</div>
+                        <div className='w-1/2 pl-3 py-2'>DL NO1: {purchaserdata.dl1}</div>
                     </div>
                     <div className='flex w-full'>
-                        <div className='w-1/2 pl-3 py-2 border-r'>CIN NO: udb455487dddf445</div>
-                        <div className='w-1/2 pl-3 py-2'>DL NO2: d5641511midsd</div>
+                        <div className='w-1/2 pl-3 py-2 border-r'>CIN NO: {purchaserdata.cin}</div>
+                        <div className='w-1/2 pl-3 py-2'>DL NO2: {purchaserdata.dl2}</div>
                     </div>
                 </div>
                 
@@ -89,10 +85,11 @@ function Billtem({billitems}) {
                     </div>
                     <div className='w-1/2 p-3'>
                         <div className='font-semibold'>Delivery Address:</div>
-                        <div>to the company</div>
-                        <div>Hn.343/A Mourana Rampur near gov.school Ajhai distt. Mathura</div>
-                        <div>DL No. upkdf4564ddd</div>
-                        <div>GST NO. A74854dhf4545dd</div>
+                        <div>{purchaserdata.name}</div>
+                        <div>{purchaserdata.address}</div>
+                        <div>{purchaserdata.city}</div>
+                        <div>DL No: {purchaserdata.dl1}</div>
+                        <div>GST NO: {purchaserdata.gst}</div>
                     </div>
                 </div>
 
