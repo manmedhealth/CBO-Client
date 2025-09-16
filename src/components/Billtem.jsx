@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Billtem({billitems, purchaserdata}) {
+function Billtem({billitems, purchaserdata, genBill, setbill}) {
 
     // Calculate amounts for display
     const calculateAmounts = (item) => {
@@ -50,8 +50,8 @@ function Billtem({billitems, purchaserdata}) {
     // console.log("purchaserdata=>",purchaserdata)
 
     return (
-        <div className='flex justify-center items-center min-h-screen bg-gray-900 p-4'>
-            <div className='w-full max-w-6xl border-2 border-red-500 bg-white'>
+        <div className={`${genBill ? "":"hidden"} flex justify-center items-center min-h-screen absolute top-25 left-0 w-full bg-gray-900/50 p-4`}>
+            <div className='w-full max-w-6xl bg-white relative '>
                 {/* Header */}
                 <div className='border-b flex items-center'>
                     <div className='ml-5 py-5 w-24 h-24 bg-gray-200 flex items-center justify-center'>LOGO</div> 
@@ -165,17 +165,21 @@ function Billtem({billitems, purchaserdata}) {
                 </div>
                 
                 {/* Footer */}
-                <div className='border-t p-3 text-sm text-center'>
+                {/* <div className='border-t p-3 text-sm text-center'>
                     This is a computer generated invoice and does not require a signature
+                </div> */}
+                <div className=' py-5 text-sm text-center'>
+                    
                 </div>
+
+                <div onClick={()=>setbill(false)} className='cursor-pointer rounded-lg absolute -top-[35px] px-2 text-xl bg-white font-semibold right-0'>X</div>
+                <div className=' absolute right-0 -bottom-[38px] px-2 py-1 rounded-lg font-semibold bg-green-700 text-white cursor-pointer '>Download Bill</div>
             </div>
         </div>
     )
 }
 
-export default Billtem
-
-
+export default Billtem;
 
 
 

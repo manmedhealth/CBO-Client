@@ -2,14 +2,15 @@ import React,{useState} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from '../page/HomePage'
 import List from '../page/List'
-import ProductList from '../page/ProductList'
+// import ProductList from '../page/ProductList'
+import ProductList from '../page/productList'
 import History from '../page/History'
 import Login from '../components/Login'
 import Navbar from '../components/Navbar'
 import Billing from '../page/Billing'
 
 const AppRouter = () => {
-  const [token, settoken] = useState("");
+  const [token, settoken] = useState("hello");
   console.log(token)
   return (  
     <div>

@@ -17,6 +17,8 @@ export default function Billing() {
     setPurchaserdata({ ...purchaserdata, [name]: value });
   };
 
+  const [bill, setbill] = useState(false);
+
   // state for generate bill
   const [items, setItems] = useState([{ 
     sn: "", 
@@ -53,7 +55,7 @@ export default function Billing() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4 border border-red-500 border-3">
       <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-6">
@@ -287,14 +289,14 @@ export default function Billing() {
             {/* <button className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
               Reset
             </button> */}
-            <button className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition">
+            <button onClick={()=>setbill(true)} className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition">
               Generate Bill
             </button>
           </div>
         </div>
       </div>
 
-      {/* <Billtem billitems={items} purchaserdata={purchaserdata} /> */}
+      <Billtem billitems={items} purchaserdata={purchaserdata} genBill={bill} setbill={setbill} /> 
     </div>
   );
 }
