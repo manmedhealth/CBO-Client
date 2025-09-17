@@ -1,8 +1,8 @@
-import React,{useState} from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React,{useState,useEffect} from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import {Routes, Route } from 'react-router-dom'
 import HomePage from '../page/HomePage'
 import List from '../page/List'
-// import ProductList from '../page/ProductList'
 import ProductList from '../page/productList'
 import History from '../page/History'
 import Login from '../components/Login'
@@ -10,10 +10,15 @@ import Navbar from '../components/Navbar'
 import Billing from '../page/Billing'
 
 const AppRouter = () => {
-  const [token, settoken] = useState("hello");
-  console.log(token)
+  const [token, settoken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : "");
+
+    useEffect(() => {
+        localStorage.setItem('token', token)
+    }, [token]);
+
   return (  
     <div>
+      <ToastContainer />
       {
         token === ""? <Login settoken={settoken}/>:
         <>

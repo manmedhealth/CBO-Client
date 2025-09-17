@@ -1,13 +1,23 @@
 import { useState } from 'react';
+import axios from 'axios'
+import { toast } from 'react-toastify';
 
 export default function Login({settoken}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email && password) {
-      settoken("helloToken");
+  const handleSubmit = async(e) => {
+    try {
+      e.preventDefault();
+      const response = await axios.post('http://localhost:3000/api/user/admin',{email, password})
+      // console.log(response)
+      if(response.data.success){
+        settoken(response.data.token)
+      }else{
+        toast.error(response.data.message)
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
