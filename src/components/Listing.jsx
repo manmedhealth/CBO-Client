@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import axios from 'axios'
+import { toast } from 'react-toastify';
 
-export default function MedicationsAdmin() {
+export default function MedicationsAdmin({token}) {
   const [inventoryData, setinventoryData] = useState({
     name: "",
     price: "",
     category: "",
-    stock: "",
+    stockquantity: "",
     description: "",
   });
 
@@ -22,7 +24,7 @@ export default function MedicationsAdmin() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!inventoryData.name || !inventoryData.price || !inventoryData.category) {
@@ -38,6 +40,10 @@ export default function MedicationsAdmin() {
       setinventoryData({ name: "", price: "", category: "", stock: "", description: "" });
       setIsSubmitting(false);
     }, 500);
+
+    const response = await axios.post('http://localhost:3000/api/product/add', inventoryData, { headers: { token } })
+    toast.success(response.data.message)
+    // console.log("res =>",response)
   };
 
   const removeMedication = (id) => {

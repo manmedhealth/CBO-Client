@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import {Routes, Route } from 'react-router-dom'
 import HomePage from '../page/HomePage'
 import List from '../page/List'
-import ProductList from '../page/productList'
+import ProductList from '../page/ProductList';
 import History from '../page/History'
 import Login from '../components/Login'
 import Navbar from '../components/Navbar'
@@ -25,18 +25,13 @@ const AppRouter = () => {
         <Navbar settoken={settoken}/>
         <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/list" element={<List />} />
-        <Route path="/alllist" element={<ProductList />} />
+        <Route path="/list" element={<List token={token}/>}/>
+        <Route path="/alllist" element={<ProductList token={token}/>} />
         <Route path="/billing" element={<Billing />} />
         <Route path="/history" element={<History />} />
       </Routes>
         </>
       }
-      
-        
-        
-        
-    
     </div>
   )
 }

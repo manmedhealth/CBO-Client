@@ -1,10 +1,10 @@
 import React from 'react'
 import Listing from '../components/Listing'
 
-function List() {
+function List({token}) {
     return (
         <div>
-            <Listing/>
+            <Listing token={token}/>
         </div>
     )
 }
