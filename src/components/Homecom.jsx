@@ -28,6 +28,8 @@ import {
   Tooltip, 
   Legend 
 } from 'chart.js';
+
+
 import { Bar, Line } from 'react-chartjs-2';
 
 
@@ -160,7 +162,7 @@ function Homecom() {
 
     return (
         <>
-  <main className="p-6 border">
+  <main className="p-6">
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl font-bold">Medical Dashboard</h1>
@@ -223,7 +225,6 @@ function Homecom() {
                       <p className="text-sm font-medium">need to add some more</p>
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
                         bg-green-100 text-green-800 
-                  
                        
                       `}>
                         {activity.stock}

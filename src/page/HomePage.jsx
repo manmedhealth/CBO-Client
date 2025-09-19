@@ -1,9 +1,12 @@
 import React from 'react'
+import Homecom from '../components/Homecom';
 
-const HomePage = ()=> {
+const HomePage = () => {
 
   return (
-  <>home page</>
+    <>
+      <Homecom />
+    </>
   );
 }
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'
 import { toast } from 'react-toastify';
 
-export default function MedicationsAdmin({token}) {
+export default function Listingcom({token}) {
   const [inventoryData, setinventoryData] = useState({
     name: "",
     price: "",

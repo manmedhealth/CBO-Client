@@ -311,7 +311,7 @@
 
 
 3.
-import Listing from './Listing'
+import Listing from './Listingcom'
 
 import React, { useState } from 'react';
 import { 
@@ -344,7 +344,9 @@ import {
 } from 'chart.js';
 import { Bar, Line } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Homecom from './Homecom';
+import HomePage from '../page/HomePage';
 
 // Register ChartJS components
 ChartJS.register(
@@ -506,7 +508,7 @@ function MonthlySalesChart({ darkMode }) {
 //   return <Bar data={data} options={options} />;
 // }
 
-const Dashboard = () => {
+const Dashboard = ({settoken}) => {
 
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -531,11 +533,11 @@ const Dashboard = () => {
 
   const navigation = [
     { name: 'Overview', href: '/', icon: FiHome, current: true },
-    { name: 'Medicins', href: '/list', icon: FiBox, current: false },
+    { name: 'Medicins', href: 'listing', icon: FiBox, current: false },
     { name: 'All list', href: 'alllist', icon: FiUsers, current: false },
     { name: 'Gen Bill', href: 'billing', icon: FiCalendar, current: false },
     { name: 'Analytics', href: 'analays', icon: FiTrendingUp, current: false },
-    { name: 'Logout', href: '#', icon: FiSettings, current: false },
+    { name: 'History', href: 'history', icon: FiTrendingUp, current: false },
   ];
 
   const upcomingAppointments = [
@@ -547,7 +549,7 @@ const Dashboard = () => {
   return (
     <div className={`min-h-screen  ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} flex justify-center`}>
       {/* Sidebar */}
-      <div className={`border border-red-500 mr-4 fixed inset-y-0 left-0 z-50 w-64 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={` my-6 rounded-xl mr-4 fixed inset-y-0 left-0 z-50 w-64 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-2xl transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex items-center justify-between p-4 border-b border-gray-200 lg:hidden">
           <div className="text-xl font-bold text-blue-600">MediDashboard</div>
           <button onClick={() => setSidebarOpen(false)} className="p-2 rounded-md text-gray-400 hover:text-gray-500">
@@ -558,15 +560,15 @@ const Dashboard = () => {
         <nav className="">
           <div className="px-4 space-y-2 ">
 
-            <div className='flex flex-col border py-2 pt-5 items-center'>
-            <div className='border h-35 w-40 rounded-lg overflow-hidden'>
+            <div className='flex flex-col py-2 pt-5 items-center'>
+            <div className=' h-35 w-40 rounded-lg overflow-hidden mb-3 shadow-xl'>
               <img
                   className=""
                   src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt="Profile"
                 />
             </div>
-            <span>mame</span>
+            <span>name</span>
             </div>
             {navigation.map((item) => (
               <Link
@@ -582,15 +584,25 @@ const Dashboard = () => {
                 <item.icon className="w-5 h-5 mr-3" />
                 {item.name}
               </Link>
+              
             ))}
+            
+
+            <button className={`flex cursor-pointer w-full px-4 py-1 rounded-md ${darkMode? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'}`}  onClick={() => settoken("")}>
+              <svg xmlns="http://www.w3.org/2000/svg" className=" w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            Logout
+            </button>
+            
           </div>
         </nav>
       </div>
 
       {/* Main content */}
-      <div className='border border-blue-500 w-[1200px]'>
-        {/* <Listing/> */}
-      <div className="border border-green-500 pt-10">
+      <div className=' w-[1200px]'>
+
+      <div className=" pt-10">
         <div className={`sticky top-0 z-40 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-sm rounded-full`}>
           <div className="flex items-center justify-between p-4">
             <button
@@ -637,13 +649,15 @@ const Dashboard = () => {
 
 
 
-          <Homecom/>
+         
+            
+            <Outlet/>
+        
+
+         
 
 
-
-
-
-        <main className="p-6 border hidden">
+        <main className="p-6 hidden">
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl font-bold">Medical Dashboard</h1>
@@ -706,7 +720,6 @@ const Dashboard = () => {
                       <p className="text-sm font-medium">need to add some more</p>
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
                         bg-green-100 text-green-800 
-                  
                        
                       `}>
                         {activity.stock}
@@ -758,6 +771,8 @@ const Dashboard = () => {
             </div>
           </div> */}
         </main>
+
+        
       </div>
       </div>
 
