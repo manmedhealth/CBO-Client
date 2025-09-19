@@ -51,6 +51,7 @@ function ProductList({token}) {
           <p className="text-gray-500">No medications added yet.</p>
         ) : (
           <div className="grid gap-4">
+            
             {list.map((med, idx) => (
               <div key={idx} className="shadow-sm">
                 <div className="p-4">

@@ -4,7 +4,7 @@ import Listing from '../components/Listing'
 function List({token}) {
     return (
         <div>
-            <Listing token={token}/>
+            hello Listing
         </div>
     )
 }
