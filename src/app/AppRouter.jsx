@@ -11,6 +11,8 @@ import Analays from '../page/Analays';
 import Listing from '../page/Listing';
 
 const AppRouter = () => {
+
+  // const [token, settoken] = useState("")
   const [token, settoken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : "");
 
   useEffect(() => {

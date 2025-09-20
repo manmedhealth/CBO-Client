@@ -174,7 +174,7 @@ function Homecom() {
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
-                <div key={index} className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
+                <div key={index} className={`p-6 rounded-lg shadow-xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
                   <div className="flex items-center">
                     <div className={`p-2 ${stat.color} rounded-lg`}>
                       <Icon className="w-6 h-6" />
@@ -197,7 +197,7 @@ function Homecom() {
           {/* Charts and Recent Activity */}
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {/* Daily Sales Chart */}
-            <div className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
+            <div className={`p-6 rounded-lg shadow-xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
               <h2 className="text-lg font-semibold mb-4">Today's Medicine Sales</h2>
               <div className="h-72">
                 <DailySalesChart darkMode={darkMode} />
@@ -205,7 +205,7 @@ function Homecom() {
             </div>
 
             {/* Recent Activity */}
-            <div className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
+            <div className={`p-6 rounded-lg shadow-xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
               <h2 className="text-lg font-semibold mb-4">Recently Finish Medician</h2>
               <div className="space-y-4">
                 {recentActivity.map((activity, index) => (
@@ -239,15 +239,15 @@ function Homecom() {
           {/* Additional Content */}
           <div className="grid grid-cols-1 gap-6 mt-6 lg:grid-cols-3">
             {/* Monthly Sales Chart */}
-            <div className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'} lg:col-span-2`}>
+            <div className={`p-6 rounded-lg shadow-xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'} lg:col-span-2`}>
               <h2 className="text-lg font-semibold mb-4">Monthly Medicine Sales Trend</h2>
               <div className="h-72">
                 <MonthlySalesChart darkMode={darkMode} />
               </div>
             </div>
 
-            {/* Upcoming Appointments */}
-            <div className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
+            {/* recent history */}
+            <div className={`p-6 rounded-lg shadow-xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
               <h2 className="text-lg font-semibold mb-4">Recently Sales History</h2>
               <div className="space-y-4">
                 {upcomingAppointments.map((appointment, index) => (

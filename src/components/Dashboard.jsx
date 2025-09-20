@@ -549,7 +549,7 @@ const Dashboard = ({settoken}) => {
   return (
     <div className={`min-h-screen  ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} flex justify-center`}>
       {/* Sidebar */}
-      <div className={` my-6 rounded-xl mr-4 fixed inset-y-0 left-0 z-50 w-64 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-2xl transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={` my-6 rounded-xl mr-4 fixed inset-y-0 left-0 z-50 w-64 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl transform transition-transform duration-200 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex items-center justify-between p-4 border-b border-gray-200 lg:hidden">
           <div className="text-xl font-bold text-blue-600">MediDashboard</div>
           <button onClick={() => setSidebarOpen(false)} className="p-2 rounded-md text-gray-400 hover:text-gray-500">
@@ -603,7 +603,7 @@ const Dashboard = ({settoken}) => {
       <div className=' w-[1200px]'>
 
       <div className=" pt-10">
-        <div className={`sticky top-0 z-40 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-sm rounded-full`}>
+        <div className={`sticky top-0 z-40 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-xl rounded-full`}>
           <div className="flex items-center justify-between p-4">
             <button
               onClick={() => setSidebarOpen(true)}
@@ -636,142 +636,11 @@ const Dashboard = ({settoken}) => {
                 <FiBell className="w-6 h-6" />
                 <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
               </button>
-              {/* <div className="relative">
-                <img
-                  className="w-10 h-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt="Profile"
-                />
-              </div> */}
             </div>
           </div>
         </div>
-
-
-
-         
             
             <Outlet/>
-        
-
-         
-
-
-        <main className="p-6 hidden">
-          {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold">Medical Dashboard</h1>
-            <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Welcome back, Dr. Smith! Here's today's overview.</p>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 gap-6 mb-8 md:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <div key={index} className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
-                  <div className="flex items-center">
-                    <div className={`p-2 ${stat.color} rounded-lg`}>
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div className="ml-4">
-                      <p className={`text-sm font-medium ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>{stat.label}</p>
-                      <p className="text-2xl font-bold">{stat.value}</p>
-                    </div>
-                  </div>
-                  <div className="mt-4">
-                    <p className={`text-sm ${stat.change.startsWith('+') ? 'text-green-600' : 'text-red-600'}`}>
-                      {stat.change} from yesterday
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Charts and Recent Activity */}
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {/* Daily Sales Chart */}
-            <div className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
-              <h2 className="text-lg font-semibold mb-4">Today's Medicine Sales</h2>
-              <div className="h-72">
-                <DailySalesChart darkMode={darkMode} />
-              </div>
-            </div>
-
-            {/* Recent Activity */}
-            <div className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
-              <h2 className="text-lg font-semibold mb-4">Recently Finish Medician</h2>
-              <div className="space-y-4">
-                {recentActivity.map((activity, index) => (
-                  <div key={index} className={`flex items-center justify-between p-3 rounded-lg ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-50'}`}>
-                    <div className="flex items-center">
-                      <img
-                        className="w-10 h-10 rounded-full"
-                        src={`https://ui-avatars.com/api/?name=${activity.name}&background=random`}
-                        alt={activity.name}
-                      />
-                      <div className="ml-4">
-                        <p className="text-sm font-medium">{activity.name}</p>
-                        <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{activity.category}</p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-sm font-medium">need to add some more</p>
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
-                        bg-green-100 text-green-800 
-                       
-                      `}>
-                        {activity.stock}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Additional Content */}
-          <div className="grid grid-cols-1 gap-6 mt-6 lg:grid-cols-3">
-            {/* Monthly Sales Chart */}
-            <div className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'} lg:col-span-2`}>
-              <h2 className="text-lg font-semibold mb-4">Monthly Medicine Sales Trend</h2>
-              <div className="h-72">
-                <MonthlySalesChart darkMode={darkMode} />
-              </div>
-            </div>
-
-            {/* Upcoming Appointments */}
-            <div className={`p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
-              <h2 className="text-lg font-semibold mb-4">Recently Sales History</h2>
-              <div className="space-y-4">
-                {upcomingAppointments.map((appointment, index) => (
-                  <div key={index} className={`p-4 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-blue-50'} border-l-4 border-blue-500`}>
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <p className="font-medium">{appointment.name}</p>
-                        <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{appointment.category}</p>
-                      </div>
-                      <span className={`px-3 py-2 text-xs rounded-full ${darkMode ? 'bg-blue-900 text-blue-200' : 'bg-blue-100 text-blue-800'}`}>
-                        <button>More</button>
-                      </span>
-                    </div>
-                    <p className={`text-sm mt-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>With {appointment.quantity}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Yearly Sales Chart */}
-          {/* <div className={`mt-6 p-6 rounded-lg shadow-sm border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
-            <h2 className="text-lg font-semibold mb-4">Yearly Medicine Sales Overview</h2>
-            <div className="h-96">
-              <YearlySalesChart darkMode={darkMode} />
-            </div>
-          </div> */}
-        </main>
-
         
       </div>
       </div>

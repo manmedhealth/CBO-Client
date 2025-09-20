@@ -55,8 +55,8 @@ export default function Billing() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-8 px-4 rounded-lg overflow-hidden relative">
+      <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-6">
           <h1 className="text-3xl font-bold">Generate Invoice</h1>
@@ -172,7 +172,7 @@ export default function Billing() {
               </button>
             </div>
             
-            <div className="overflow-x-auto">
+            <div>
               <table className="w-full">
                 <thead>
                   <tr className="bg-gray-100 text-left text-gray-700">
@@ -295,8 +295,9 @@ export default function Billing() {
           </div>
         </div>
       </div>
-
+              <div className=" absolute top-0 left-0 w-full ">
       <Billtem billitems={items} purchaserdata={purchaserdata} genBill={bill} setbill={setbill} /> 
+              </div>
     </div>
   );
 }

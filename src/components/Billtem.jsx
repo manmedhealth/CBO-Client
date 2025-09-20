@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Billtem({billitems, purchaserdata, genBill, setbill}) {
+function Billtem({ billitems, purchaserdata, genBill, setbill }) {
 
     // Calculate amounts for display
     const calculateAmounts = (item) => {
@@ -9,7 +9,7 @@ function Billtem({billitems, purchaserdata, genBill, setbill}) {
         const sgstAmount = amount * (item.sgstRate / 100);
         const igstAmount = amount * (item.igstRate / 100);
         const total = amount + cgstAmount + sgstAmount + igstAmount;
-        
+
         return {
             amount,
             cgstAmount,
@@ -19,7 +19,7 @@ function Billtem({billitems, purchaserdata, genBill, setbill}) {
         };
     };
 
-// Calculate totals for all items
+    // Calculate totals for all items
     const calculateTotals = () => {
         let totalAmount = 0;
         let totalCgst = 0;
@@ -50,14 +50,14 @@ function Billtem({billitems, purchaserdata, genBill, setbill}) {
     // console.log("purchaserdata=>",purchaserdata)
 
     return (
-        <div className={`${genBill ? "":"hidden"} flex justify-center items-center min-h-screen absolute top-25 left-0 w-full bg-gray-900/50 p-4`}>
-            <div className='w-full max-w-6xl bg-white relative '>
+        <div className={`${genBill ? "" : "hidden"} flex justify-end items-center min-h-screen w-full bg-gray-900/50 p-4`}>
+            <div className='w-full max-w-6xl bg-white rounded-lg relative '>
                 {/* Header */}
                 <div className='border-b flex items-center'>
-                    <div className='ml-5 py-5 w-24 h-24 bg-gray-200 flex items-center justify-center'>LOGO</div> 
-                    <div className='w-full flex items-center text-2xl font-semibold justify-center'>{purchaserdata.name}</div> 
+                    <div className='ml-5 py-5 w-24 h-24 bg-gray-200 flex items-center justify-center'>LOGO</div>
+                    <div className='w-full flex items-center text-2xl font-semibold justify-center'>{purchaserdata.name}</div>
                 </div>
-                
+
                 {/* GSTIN and DL Info */}
                 <div className='border-b'>
                     <div className='flex w-full'>
@@ -69,12 +69,14 @@ function Billtem({billitems, purchaserdata, genBill, setbill}) {
                         <div className='w-1/2 pl-3 py-2'>DL NO2: {purchaserdata.dl2}</div>
                     </div>
                 </div>
-                
+
+
+
                 {/* Title */}
                 <div className='flex justify-center text-xl font-semibold py-2 bg-gray-100'>
                     Purchase Order
                 </div>
-                
+
                 {/* Company and Delivery Info */}
                 <div className='border-b flex'>
                     <div className='w-1/2 p-3 border-r'>
@@ -145,7 +147,6 @@ function Billtem({billitems, purchaserdata, genBill, setbill}) {
                                 );
                             })}
 
-
                             {/* Summary Row */}
                             <tr className='bg-gray-100 font-semibold'>
                                 <td className='border px-2 py-1 text-right' colSpan="5">Total:</td>
@@ -163,16 +164,17 @@ function Billtem({billitems, purchaserdata, genBill, setbill}) {
                         </tbody>
                     </table>
                 </div>
-                
+
                 {/* Footer */}
                 {/* <div className='border-t p-3 text-sm text-center'>
                     This is a computer generated invoice and does not require a signature
                 </div> */}
+
                 <div className=' py-5 text-sm text-center'>
-                    
+
                 </div>
 
-                <div onClick={()=>setbill(false)} className='cursor-pointer rounded-lg absolute -top-[35px] px-2 text-xl bg-white font-semibold right-0'>X</div>
+                <div onClick={() => setbill(false)} className='cursor-pointer rounded-lg absolute -top-[35px] px-2 text-xl bg-white font-semibold right-0'>X</div>
                 <div className=' absolute right-0 -bottom-[38px] px-2 py-1 rounded-lg font-semibold bg-green-700 text-white cursor-pointer '>Download Bill</div>
             </div>
         </div>

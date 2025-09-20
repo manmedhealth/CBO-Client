@@ -53,7 +53,7 @@ function ProductList({token}) {
           <div className="grid gap-4">
             
             {list.map((med, idx) => (
-              <div key={idx} className="shadow-sm">
+              <div key={idx} className="shadow-xl">
                 <div className="p-4">
                   <h3 className="text-xl font-semibold">{med.name}</h3>
                   <p className="text-sm text-gray-500">{med.category}</p>
