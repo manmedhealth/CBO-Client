@@ -8,7 +8,7 @@ import Login from '../components/Login'
 import Billing from '../page/Billing'
 import Dashboard from '../components/Dashboard';
 import Analays from '../page/Analays';
-import Listing from '../page/Listing';
+// import Listing from '../page/Listing';
 
 const AppRouter = () => {
 
@@ -30,7 +30,7 @@ const AppRouter = () => {
               {/*dash layout wrap all the co te t */}
               <Route path="/" element={<Dashboard settoken={settoken} />} >
                 <Route path="" element={<HomePage />} />
-                <Route path="listing" element={<Listing token={token} />} />
+                {/* <Route path="listing" element={<Listing token={token} />} /> */}
                 <Route path="alllist" element={<ProductList token={token} />} />
                 <Route path="billing" element={<Billing />} />
                 <Route path="analays" element={<Analays />} />

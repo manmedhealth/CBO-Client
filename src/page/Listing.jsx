@@ -1,12 +1,12 @@
-import React from 'react'
-import Listingcom from '../components/Listingcom';
+// import React from 'react'
+// import Listingcom from '../components/Listingcom';
 
-function Listing() {
-    return (
-        <>
-            <Listingcom/>
-        </>
-    )
-}
+// function Listing() {
+//     return (
+//         <>
+//             <Listingcom/>
+//         </>
+//     )
+// }
 
-export default Listing
+// export default Listing
