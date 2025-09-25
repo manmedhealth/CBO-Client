@@ -5,8 +5,11 @@ import { FiTrash2 } from "react-icons/fi";
 import { CiCalculator2 } from "react-icons/ci";
 import { LuPrinterCheck } from "react-icons/lu";
 import { MdOutlineSaveAlt } from "react-icons/md";
+import Billtemsell from './Billtemsell';
 
 const SellBill = () => {
+
+  const [show, setshow] = useState(false)
   // State for form data
   const [billData, setBillData] = useState({
     customerInfo: {
@@ -423,14 +426,23 @@ const SellBill = () => {
 
           {/* Action Buttons */}
           <div className="flex justify-end space-x-4 mt-8 pt-6 border-t">
-            <button
+            {/* <button
               onClick={() => handleSubmit('save')}
+              className="flex items-center px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              <MdOutlineSaveAlt className="h-4 w-4 mr-2" />
+              Save Bill
+            </button> */}
+
+            <button
+              onClick={() => setshow(true)}
               className="flex items-center px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               {/* <Save className="h-4 w-4 mr-2" /> */}
               <MdOutlineSaveAlt className="h-4 w-4 mr-2" />
-              Save Bill
+              Gen Bill
             </button>
+
             <button
               onClick={() => handleSubmit('print')}
               className="flex items-center px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -442,6 +454,11 @@ const SellBill = () => {
           </div>
         </div>
       </div>
+
+            <div className={`${show?"":"hidden"}`}>
+              <Billtemsell setshow={setshow}/>
+            </div>
+
     </div>
   );
 };
