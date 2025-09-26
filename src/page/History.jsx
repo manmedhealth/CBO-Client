@@ -12,9 +12,15 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { FaSearch, FaFilter, FaFileExport, FaPrint, FaEye, FaEdit, FaTrash, FaCalendar, FaReceipt, FaShoppingCart, FaTruck, FaChartBar, FaFilePdf, FaFileExcel } from 'react-icons/fa';
+import { FaSearch, FaEye, FaReceipt, FaShoppingCart, FaTruck, FaChartBar, } from 'react-icons/fa';
+import BillItem from '../components/Billtem';
+import Billtemsell from '../components/Billtemsell';
 
 const History = () => {
+
+const [show, setshow] = useState(false)
+  // State for form data
+  
   const [activeView, setActiveView] = useState('history');
   const [selectedType, setSelectedType] = useState('all');
   const [dateRange, setDateRange] = useState({
@@ -90,6 +96,21 @@ const History = () => {
     }
   ]);
 
+
+
+  // {
+  //     id: 5,
+  //     billNumber: 'SEL-2024-003',
+  //     type: 'purchase',
+  //     date: '2025-09-26',
+  //     supplierinfo: {company: 'customerA', },
+  //     totalAmount: 2150.00,
+  //     taxAmount: 193.50,
+  //     status: 'completed',
+  //     items: 7,
+  //     paymentMethod: 'card'
+  //   }
+
   // Filter bills based on selections
   const filteredBills = bills.filter(bill => {
     const matchesType = selectedType === 'all' || bill.type === selectedType;
@@ -138,6 +159,7 @@ const History = () => {
   // View bill details
   const viewBillDetails = (bill) => {
     setSelectedBill(bill);
+    setshow(true)
   };
 
   // Close bill details
@@ -155,7 +177,7 @@ const History = () => {
               <h1 className="text-2xl font-bold text-gray-800">History & Reporting</h1>
               <p className="text-gray-600">Manage and analyze your billing history</p>
             </div>
-            <div className="flex flex-wrap gap-3 mt-4 lg:mt-0">
+            {/* <div className="flex flex-wrap gap-3 mt-4 lg:mt-0 border">
               <button 
                 onClick={exportToPDF}
                 className="flex items-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
@@ -174,7 +196,7 @@ const History = () => {
               >
                 <FaPrint className="mr-2" /> Print
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* View Toggle */}
@@ -366,12 +388,12 @@ const History = () => {
                             >
                               <FaEye />
                             </button>
-                            <button className="text-green-600 hover:text-green-900">
+                            {/* <button className="text-green-600 hover:text-green-900">
                               <FaEdit />
                             </button>
                             <button className="text-red-600 hover:text-red-900">
                               <FaTrash />
-                            </button>
+                            </button> */}
                           </div>
                         </td>
                       </tr>
@@ -453,7 +475,7 @@ const History = () => {
         )}
 
         {/* Bill Details Modal */}
-        {selectedBill && (
+        {/* {selectedBill && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
             <div className="bg-white rounded-lg max-w-2xl w-full max-h-96 overflow-y-auto">
               <div className="p-6">
@@ -492,7 +514,17 @@ const History = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
+
+            <div className={`${show?'':'hidden'}`}>
+              
+              {
+                selectedBill.type === "sell"?<Billtemsell setshow={setshow} />:<BillItem setshow={setshow} />
+              }
+            </div>
+         
+ 
+
       </div>
     </div>
   );

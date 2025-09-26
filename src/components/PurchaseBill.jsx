@@ -3,6 +3,10 @@ import { FaSearch, FaPlus, FaTrash, FaBox, FaTruck, FaSave, FaPrint, FaUpload, F
 import Billtem from './Billtem';
 
 const PurchaseBill = () => {
+
+        // state for show & hide the Billtem com
+  const [show, setshow] = useState(false)
+
   // State for form data
   const [billData , setBillData] = useState({
     supplierInfo: {
@@ -30,8 +34,7 @@ const PurchaseBill = () => {
   const [showSupplierDropdown, setShowSupplierDropdown] = useState(false);
   const [filteredSuppliers, setFilteredSuppliers] = useState([]);
 
-  // state for show & hide the Billtem com
-  const [show, setshow] = useState(false)
+
 
   // State for medicine search and management
   const [medicineSearch, setMedicineSearch] = useState('');
@@ -249,6 +252,7 @@ const PurchaseBill = () => {
 
   // Handle bill submission
   const handleSubmit = (action) => {
+    setshow(true)
     if (!validateForm()) return;
 
     const purchasePayload = {
@@ -796,20 +800,20 @@ const PurchaseBill = () => {
 
           {/* Action Buttons */}
           <div className="flex justify-end space-x-4 mt-8 pt-6 border-t">
-            {/* <button
+            <button
               onClick={() => handleSubmit('save')}
               className="flex items-center px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               <FaSave className="h-4 w-4 mr-2" />
               Save Purchase
-            </button> */}
-            <button
+            </button>
+            {/* <button
               onClick={() => setshow(true)}
               className="flex items-center px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               <FaSave className="h-4 w-4 mr-2" />
               Gen Bill
-            </button>
+            </button> */}
             <button
               onClick={() => handleSubmit('print')}
               className="flex items-center px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -820,8 +824,9 @@ const PurchaseBill = () => {
           </div>
         </div>
       </div>
-      <div className={`${show?'':'hidden'} border  absolute top-0 left-0`}> 
-            <Billtem setshow={setshow} />
+      
+      <div className={`${show?'':'hidden'}  absolute top-0 left-0`}> 
+            <Billtem setshow={setshow}/>
       </div>
     </div>
   );

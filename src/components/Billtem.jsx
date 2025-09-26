@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-function BillItem({ setshow, billData = {} }) {
+function BillItem({setshow, billData = {} }) {
+
+ 
+
     // Sample data structure (in real app, this would come from props)
     const defaultBillData = {
         company: {
@@ -93,7 +96,7 @@ function BillItem({ setshow, billData = {} }) {
     const totals = calculateTotals();
 
     return (
-        <div className="fixed inset-0 flex justify-center items-start min-h-screen w-full bg-gray-900/50 p-4 z-50 overflow-y-auto">
+        <div className='fixed inset-0 flex justify-center items-start min-h-screen w-full bg-gray-900/50 p-4 z-50 overflow-y-auto'>
             <div className="w-full max-w-7xl bg-white rounded-lg relative shadow-2xl my-8">
                 {/* Header */}
                 <div className="border-b flex items-center p-6">
@@ -111,18 +114,18 @@ function BillItem({ setshow, billData = {} }) {
                 {/* GSTIN and DL Info */}
                 <div className="border-b bg-gray-50">
                     <div className="flex w-full">
-                        <div className="w-1/2 pl-6 py-3 border-r font-semibold text-gray-700">
+                        <div className="w-1/2 pl-6 py-1 border-r font-semibold text-gray-700">
                             GSTIN: <span className="font-normal">{data.company.gstin}</span>
                         </div>
-                        <div className="w-1/2 pl-6 py-3 font-semibold text-gray-700">
+                        <div className="w-1/2 pl-6 py-1 font-semibold text-gray-700">
                             DL NO1: <span className="font-normal">{data.company.dl1}</span>
                         </div>
                     </div>
                     <div className="flex w-full">
-                        <div className="w-1/2 pl-6 py-3 border-r font-semibold text-gray-700">
+                        <div className="w-1/2 pl-6 py-1 border-r font-semibold text-gray-700">
                             CIN: <span className="font-normal">{data.company.cin}</span>
                         </div>
-                        <div className="w-1/2 pl-6 py-3 font-semibold text-gray-700">
+                        <div className="w-1/2 pl-6 py-1 font-semibold text-gray-700">
                             DL NO2: <span className="font-normal">{data.company.dl2}</span>
                         </div>
                     </div>
@@ -139,7 +142,7 @@ function BillItem({ setshow, billData = {} }) {
 
                 {/* Company and Delivery Info */}
                 <div className="border-b flex">
-                    <div className="w-1/2 p-6 border-r">
+                    <div className="w-1/2 px-6 py-3 border-r">
                         <div className="font-bold text-lg text-gray-800 mb-3">Supplier Information</div>
                         <div className="space-y-2 text-gray-700">
                             <div><strong>Name:</strong> {data.supplier.name}</div>
@@ -151,7 +154,7 @@ function BillItem({ setshow, billData = {} }) {
                         </div>
                     </div>
 
-                    <div className="w-1/2 p-6">
+                    <div className="w-1/2 px-6 py-3">
                         <div className="font-bold text-lg text-gray-800 mb-3">Delivery Address</div>
                         <div className="space-y-2 text-gray-700">
                             <div><strong>Company:</strong> {data.company.name}</div>
@@ -187,21 +190,21 @@ function BillItem({ setshow, billData = {} }) {
                         <tbody>
                             {data.items.map((item, index) => (
                                 <tr key={item.id} className="hover:bg-gray-50">
-                                    <td className="border border-gray-300 px-4 py-2 text-center">{index + 1}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{item.medicineName}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{item.genericName}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{item.manufacturer}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{item.batchNo}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{item.description}</td>
-                                    <td className="border border-gray-300 px-4 py-2">
+                                    <td className="border border-gray-300 px-4 py-1 text-center">{index + 1}</td>
+                                    <td className="border border-gray-300 px-4 py-1">{item.medicineName}</td>
+                                    <td className="border border-gray-300 px-4 py-1">{item.genericName}</td>
+                                    <td className="border border-gray-300 px-4 py-1">{item.manufacturer}</td>
+                                    <td className="border border-gray-300 px-4 py-1">{item.batchNo}</td>
+                                    <td className="border border-gray-300 px-4 py-1">{item.description}</td>
+                                    <td className="border border-gray-300 px-4 py-1">
                                         {new Date(item.deliveryDate).toLocaleDateString()}
                                     </td>
-                                    <td className="border border-gray-300 px-4 py-2 text-right">₹{item.mrp.toFixed(2)}</td>
-                                    <td className="border border-gray-300 px-4 py-2 text-right">₹{item.purchasePrice.toFixed(2)}</td>
-                                    <td className="border border-gray-300 px-4 py-2 text-right">{item.quantity}</td>
-                                    <td className="border border-gray-300 px-4 py-2 text-right">₹{item.discount.toFixed(2)}</td>
-                                    <td className="border border-gray-300 px-4 py-2 text-right">₹{item.shippingCharge.toFixed(2)}</td>
-                                    <td className="border border-gray-300 px-4 py-2 text-right font-semibold">
+                                    <td className="border border-gray-300 px-4 py-1 text-right">₹{item.mrp.toFixed(2)}</td>
+                                    <td className="border border-gray-300 px-4 py-1 text-right">₹{item.purchasePrice.toFixed(2)}</td>
+                                    <td className="border border-gray-300 px-4 py-1 text-right">{item.quantity}</td>
+                                    <td className="border border-gray-300 px-4 py-1 text-right">₹{item.discount.toFixed(2)}</td>
+                                    <td className="border border-gray-300 px-4 py-1 text-right">₹{item.shippingCharge.toFixed(2)}</td>
+                                    <td className="border border-gray-300 px-4 py-1 text-right font-semibold">
                                         ₹{((item.purchasePrice * item.quantity) - item.discount + item.shippingCharge).toFixed(2)}
                                     </td>
                                 </tr>
@@ -214,47 +217,47 @@ function BillItem({ setshow, billData = {} }) {
                         <table className="border-collapse border border-gray-300 w-full max-w-md">
                             <tbody>
                                 <tr className="border-b border-gray-300">
-                                    <td className="border border-gray-300 px-4 py-3 text-right font-semibold bg-gray-50 w-1/2">
+                                    <td className="border border-gray-300 px-4 py-1 text-right font-semibold bg-gray-50 w-1/2">
                                         Subtotal:
                                     </td>
-                                    <td className="border border-gray-300 px-4 py-3 text-right w-1/2">
+                                    <td className="border border-gray-300 px-4 py-1 text-right w-1/2">
                                         ₹{totals.subtotal.toFixed(2)}
                                     </td>
                                 </tr>
                                 
                                 <tr className="border-b border-gray-300">
-                                    <td className="border border-gray-300 px-4 py-3 text-right font-semibold bg-gray-50">
+                                    <td className="border border-gray-300 px-4 py-1 text-right font-semibold bg-gray-50">
                                         Total Discount:
                                     </td>
-                                    <td className="border border-gray-300 px-4 py-3 text-right">
+                                    <td className="border border-gray-300 px-4 py-1 text-right">
                                         -₹{totals.totalDiscount.toFixed(2)}
                                     </td>
                                 </tr>
                 
                                 
                                 <tr className="border-b border-gray-300">
-                                    <td className="border border-gray-300 px-4 py-3 text-right font-semibold bg-gray-50">
+                                    <td className="border border-gray-300 px-4 py-1 text-right font-semibold bg-gray-50">
                                         GST ({totals.gstRate}%):
                                     </td>
-                                    <td className="border border-gray-300 px-4 py-3 text-right">
+                                    <td className="border border-gray-300 px-4 py-1 text-right">
                                         ₹{totals.gstAmount.toFixed(2)}
                                     </td>
                                 </tr>
                                 
                                 <tr className="border-b border-gray-300">
-                                    <td className="border border-gray-300 px-4 py-3 text-right font-semibold bg-gray-50">
+                                    <td className="border border-gray-300 px-4 py-1 text-right font-semibold bg-gray-50">
                                         Shipping Charges:
                                     </td>
-                                    <td className="border border-gray-300 px-4 py-3 text-right">
+                                    <td className="border border-gray-300 px-4 py-1 text-right">
                                         ₹{totals.totalShipping.toFixed(2)}
                                     </td>
                                 </tr>
                                 
                                 <tr className="bg-blue-50 font-bold">
-                                    <td className="border border-gray-300 px-4 py-4 text-right text-lg">
+                                    <td className="border border-gray-300 px-4 py-2 text-right text-lg">
                                         Grand Total:
                                     </td>
-                                    <td className="border border-gray-300 px-4 py-4 text-right text-lg">
+                                    <td className="border border-gray-300 px-4 py-2 text-right text-lg">
                                         ₹{totals.grandTotal.toFixed(2)}
                                     </td>
                                 </tr>
